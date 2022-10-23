@@ -1,0 +1,151 @@
+int32_t _init(int32_t arg1, int32_t arg2)
+{
+    return call_weak_fn(arg1, arg2);
+}
+
+int32_t sub_3e8()
+{
+    /* jump -> nullptr */
+}
+
+void __cxa_finalize(void *d)
+{
+    /* tailcall */
+    return __cxa_finalize(d);
+}
+
+int32_t printf(char *arg1, char const *format, ...)
+{
+    /* tailcall */
+    return printf();
+}
+
+void __libc_start_main(
+    int32_t (*main)(int32_t argc, char **argv, char **envp), int32_t argc,
+    char **ubp_av, void (*init)(), void (*fini)(), void (*rtld_fini)(),
+    void *stack_end) __noreturn
+{
+    /* tailcall */
+    return __libc_start_main(main, argc, ubp_av, init, fini, rtld_fini, stack_end);
+}
+
+int32_t __gmon_start__()
+{
+    /* tailcall */
+    return __gmon_start__();
+}
+
+int32_t __isoc99_scanf(char *arg1, char const *format, ...)
+{
+    /* tailcall */
+    return __isoc99_scanf();
+}
+
+void abort() __noreturn
+{
+    /* tailcall */
+    return abort();
+}
+
+int32_t _start(void (*arg1)(), void *arg2) __noreturn
+{
+    __libc_start_main(main, arg2, &arg_4, __libc_csu_init, __libc_csu_fini, arg1, &arg_4);
+    /* no return */
+}
+
+void call_weak_fn(int32_t arg1, int32_t arg2)
+{
+    int32_t (*const r2)() = __gmon_start__;
+    if (__gmon_start__ == 0)
+    {
+        return;
+    }
+    /* tailcall */
+    return __gmon_start__(arg1, arg2, r2, &_GLOBAL_OFFSET_TABLE_);
+}
+
+int32_t deregister_tm_clones(int32_t arg1, int32_t arg2)
+{
+    return &__TMC_END__;
+}
+
+int32_t register_tm_clones()
+{
+    return &__TMC_END__;
+}
+
+void __do_global_dtors_aux()
+{
+    if (((uint32_t)__TMC_END__) != 0)
+    {
+        return;
+    }
+    if (__cxa_finalize != 0)
+    {
+        __cxa_finalize(__dso_handle);
+    }
+    deregister_tm_clones();
+    __TMC_END__ = 1;
+}
+
+int32_t frame_dummy()
+{
+    /* tailcall */
+    return register_tm_clones();
+}
+
+int32_t main(int32_t argc, char **argv, char **envp)
+{
+    printf("Hello, welcome to this challenge…", argv, envp, "Hello, welcome to this challenge…");
+    int32_t var_10;
+    int32_t r0;
+    char *r1_1;
+    r0 = __isoc99_scanf(&data_74c, &var_10);
+    int32_t r3_1;
+    if (r0 == 0)
+    {
+        printf("What are you doing? It's not a n…");
+        r3_1 = 1;
+    }
+    else
+    {
+        int32_t r2 = var_10;
+        if (r2 != n)
+        {
+            printf("Nope!", r1_1, r2, "Nope!");
+        }
+        else
+        {
+            printf("How did you know? You can flag t…", r1_1, r2, "How did you know? You can flag t…");
+        }
+        r3_1 = 0;
+    }
+    return r3_1;
+}
+
+void __libc_csu_init()
+{
+    void *r5 = &__init_array_start;
+    int32_t r0;
+    int32_t r1;
+    _init(r0, r1);
+    int32_t r4 = 0;
+    do
+    {
+        r4 = (r4 + 1);
+        int32_t r3_1 = *(int32_t *)r5;
+        r5 = ((char *)r5 + 4);
+        int32_t r2;
+        r3_1(r0, r1, r2, r3_1);
+    } while (1 != r4);
+}
+
+void __libc_csu_fini()
+{
+    return;
+}
+
+int32_t _fini()
+{
+    return;
+}
